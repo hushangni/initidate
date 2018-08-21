@@ -5,6 +5,7 @@ const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const notify = require('gulp-notify');
+const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 
@@ -15,6 +16,7 @@ gulp.task('styles', ()=> {
         // use the pipe method-sass to check for errors in you sass
         .pipe(sass().on('error', sass.logError))
         // use the concat method to concat your file into a css file
+        .pipe(autoprefixer('last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
         .pipe(concat('style.css'))
         // use the gulp method-dest(ination) to save your new css file
         .pipe(gulp.dest('./public/styles'))
@@ -25,7 +27,7 @@ gulp.task('styles', ()=> {
 // create a gulp.task method called js
 // takes all of our js code and transpiling
 gulp.task('js', () => {
-    // 
+    //
     browserify('./dev/scripts/main.js', { debug: true })
         .transform('babelify', {
             sourceMaps: true,
@@ -59,6 +61,7 @@ gulp.task('watch', ()=>{
     // watch this path for changes, run these functions - array so you can add more later
     gulp.watch('./dev/styles/**/*.scss', ['styles']);
     gulp.watch('./dev/scripts/**/*.js', ['js']);
+    gulp.watch('*.html', reload);
 });
 
 // start browser sync first, then styles, then js, then use the watch task
