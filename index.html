@@ -20,62 +20,92 @@
 
 	<!-- questions page -->
 	<main>
-		<section class="section section1">
+		<!-- base/category choosing -->
+		<section class="section section1 cocktail">
+			<h3>What's your relationship status?</h3>
+
 			<form action="#">
-				<input type="radio">
-				<label for=""></label>
-				<input type="radio">
-				<label for=""></label>
-				<input type="radio">
-				<label for=""></label>
+				<input type="radio" name="category" id="first" value="first">
+				<label for="first">1st Date</label>
+
+				<input type="radio" name="category" id="friends" value="friends">
+				<label for="friends">Just Friends (for now)</label>
+
+				<input type="radio" name="category" id="relationship" value="relationship">
+				<label for="relationship">In a Relationship</label>
 			</form>
 		</section>
-		<section class="section section2">
+
+		<!-- movie genre choosing -->
+		<section class="section section2 movie">
+			<h3>What do you want to get out of the date?</h3>
+
 			<form action="#">
-				<input type="radio">
-				<label for=""></label>
-				<input type="radio">
-				<label for=""></label>
-				<input type="radio">
-				<label for=""></label>
+				<input type="radio" name="genre" id="convo" value="convo">
+				<label for="convo">Intelligent Conversation</label>
+
+				<input type="radio" name="genre" id="laughs" value="laughs">
+				<label for="laughs">Shared Laughs and Jokes</label>
+
+				<input type="radio" name="genre", id="cuddles" value="cuddles">
+				<label for="cuddles">Cozy Cuddles</label>
 			</form>
 		</section>
-		<section class="section section3">
+
+		<!-- movie rating choosing -->
+		<section class="section section3 movie">
+			<h3>Use 1 word to describe your date.</h3>
+
 			<form action="#">
-				<input type="radio">
-				<label for=""></label>
-				<input type="radio">
-				<label for=""></label>
-				<input type="radio">
-				<label for=""></label>
+				<input type="radio" name="rating" id="classy" value="8">
+				<label for="classy">Classy</label>
+
+				<input type="radio" name="rating", id="ratchet" value="4">
+				<label for="ratchet">Ratchet</label>
+
+				<input type="radio" name="rating" id="whimsical" value="6">
+				<label for="whimsical">Whimsical</label>
 			</form>
 		</section>
-		<section class="section section4">
+
+		<!-- alcholic/non-alcoholic choosing -->
+		<section class="section section4 cocktail">
+			<h3>Alcohol?</h3>
+
 			<form action="#">
-				<input type="radio">
-				<label for=""></label>
-				<input type="radio">
-				<label for=""></label>
+				<input type="radio" name="alcohol" id="alcoholic" value="alcoholic">
+				<label for="alcoholic">Yes, Spirituous</label>
+
+				<input type="radio" name="alcohol" id="non-alcoholic" value="non-alcoholic">
+				<label for="non-alcoholic">No Thanks, Clear Minded</label>
 			</form>
 		</section>
-		<button>Submit</button>
+
+		<!-- submit answers -->
+		<button id="submit">Submit</button>
 	</main>
 
 	<!-- results -->
 	<section>
 		<!-- drinks result -->
-		<div>
+		<div class="drinks-result result">
 			<h2></h2>
+			<div class="drinks-result__container">
 
-			<button>Get another drink</button>
+			</div>
+
+			<button class="another-drink">Get another drink</button>
 
 		</div>
 
 		<!-- movies result -->
-		<div>
+		<div class="movies-result result">
 			<h2></h2>
+			<div class="movies-result__container">
 
-			<button>Get another movie</button>
+			</div>
+
+			<button class="another-movie">Get another movie</button>
 		</div>
 
 		<!-- back to questions -->
