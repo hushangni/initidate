@@ -40,10 +40,27 @@ app.getMovies = (userGenre, userRating) => {
     })
 };
 
+
+app.getCocktail = (search)=> {
+    $.ajax({
+        url: `https://www.thecocktaildb.com/api/json/v1/1/${search}`,
+        method: 'GET',
+        dataType: 'json',
+        data: {
+            key: '1'
+        }
+    }).then((res)=> {
+        console.log(res);
+        
+    })
+}
+
 // init function
 app.init = () => {
     // testing genre: action and userRating: 8 and below
     app.getMovies(28, 8);
+    // there are specific filters(end points) depending on ingredients/etc
+    app.getCocktail('filter.php?i=Vodka');
 }
 
 $(function() {
