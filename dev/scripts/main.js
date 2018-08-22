@@ -60,7 +60,13 @@ app.init = () => {
     // testing genre: action and userRating: 8 and below
     app.getMovies(28, 8);
     // there are specific filters(end points) depending on ingredients/etc
-    app.getCocktail('filter.php?i=Vodka');
+    // app.getCocktail('filter.php?i=Vodka');
+    // app.getCocktail('lookup.php?i=13060');
+    app.getCocktail('filter.php?a=Non_Alcoholic');
+    // app.getCocktail('lookup.php?i=12560');
+    // app.getCocktail('lookup.php?i=12654');
+    // app.getCocktail('lookup.php?i=12770');
+    app.getCocktail('lookup.php?i=12720');
 }
 
 $(function() {
