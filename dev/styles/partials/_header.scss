@@ -1,0 +1,67 @@
+
+.header {
+    height: 100vh;
+    width: 100%;
+    background: url('../../images/martini-cocktail-on-glass-hd-wallpaper.jpg');
+    background-size: cover;
+    background-position: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__container{
+        background-color: $primaryColorOpacity;
+        clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 80%);
+        margin: 0 auto;
+        height: 30vh;
+        width: 100%;
+        min-width: 350px;
+        display: flex;
+        flex-wrap: wrap;
+        &__side {
+            width: 50%;
+            height: 100%;
+            // border: 1px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+
+    }
+    &__text {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        & span {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: $accentFontColor;
+        }
+        color: $primaryFontColor;
+        // text-transform: uppercase;
+        position: absolute;
+        top: 35%;
+        transition: .4s;
+        &--left {
+            right: 0px;
+            &--end {
+                right: -200px;  
+            }
+        }
+        &--right {
+            left: 0px;
+            &--end {
+                left: -200px;
+            }
+        }
+    }
+    &:hover &__text--left--end {
+        right: 2.5px;
+    }
+    &:hover &__text--left--start {
+        right: -200px;
+    }
+    &:hover &__text--right--end {
+        left: 2.5px;
+    }
+    &:hover &__text--right--start {
+        left: -200px;
+    }
+
+}

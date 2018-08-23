@@ -1,3 +1,11 @@
-@import 'setup';
+@import 'partials/_setup.scss';
+
+@import 'partials/_global.scss';
+
+@import 'partials/_mixins.scss';
+
+@import 'partials/_header.scss';
+@import 'partials/_questions.scss';
+@import 'partials/_results.scss';
 
 
