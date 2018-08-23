@@ -121,6 +121,42 @@ app.getCocktail = (search)=> {
         }
     }).then((res)=> {
         console.log(res);
+        
+        console.log(app.getRandNum(res.drinks.length));
+        app.randomDrinkNumber = app.getRandNum(res.drinks.length);
+        
+
+        const newSearch = `filter.php?i=${app.drinkType}`;
+        console.log(newSearch);
+        
+
+        $.ajax({
+            url: `${app.cocktailBaseURL}${newSearch}`,
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                key: '1'
+            }   
+        }).then((res)=>{            
+            // random array for drink - get ID
+            console.log(res.drinks[app.randomDrinkNumber].idDrink);
+            const getDrinkById = res.drinks[app.randomDrinkNumber].idDrink;
+
+            $.ajax({
+                url: `${app.cocktailBaseURL}lookup.php?i=${getDrinkById}`,
+                method: 'GET',
+                dataType: 'json',
+                data: {
+                    key: '1'
+                }
+            }).then((res) => {
+                // grab drink data
+                console.log(res);
+                console.log(res.drinks[0]);
+
+            });
+        });
+        
 
     })
 }
@@ -158,10 +194,10 @@ app.events = () => {
         const drinkCategory = $('input[name=category]:checked').val();
         const drinkArray = app.cocktailCategory[alcholic][drinkCategory];
         const drinkNumber = app.getRandNum(drinkArray.length);
-        const drinkType = drinkArray[drinkNumber];
+        app.drinkType = drinkArray[drinkNumber];
         
         // get array of drinks by type - wine/shake/etc
-        app.getCocktail(`filter.php?i=${drinkType}`);
+        app.getCocktail(`filter.php?i=${app.drinkType}`);
     });
 
     $('.another-movie').on('click', function(e) {
@@ -172,15 +208,7 @@ app.events = () => {
 
 // init function
 app.init = () => {
-    // testing genre: action and userRating: 8 and below
-    // there are specific filters(end points) depending on ingredients/etc
-    // app.getCocktail('filter.php?i=Vodka');
-    // app.getCocktail('lookup.php?i=13060');
-    // app.getCocktail('filter.php?a=Non_Alcoholic');
-    // app.getCocktail('lookup.php?i=12560');
-    // app.getCocktail('lookup.php?i=12654');
-    // app.getCocktail('lookup.php?i=12770');
-    app.getCocktail('lookup.php?i=12720');
+    
 
     app.events();
 }
