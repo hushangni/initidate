@@ -1,0 +1,29 @@
+html {
+    font-size: 62.5%;
+}
+
+$primaryFont: 'Playfair Display', serif;
+$secondaryFont: 'Source Sans Pro', sans-serif;
+
+
+$primaryColor:darkred;
+$primaryColorOpacity: rgba(139, 0, 0, 0.733);
+$secondaryColor: #323232;
+
+$primaryFontColor: white;
+$secondaryFontColor: black;
+$accentFontColor: rgba(190,190,190);
+
+
+$buttonHover: red;
+
+
+$resultsPage: darkred;
+
+@mixin header {
+    font-family: $primaryFont;
+    text-transform: uppercase;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
