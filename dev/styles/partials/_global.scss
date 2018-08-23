@@ -6,3 +6,21 @@ ul {
     padding: 0;
     margin: 0;
 }
+
+.button {
+    position: absolute;
+    border-radius: 30px;
+    padding: 15px 27px;
+    border: 2px solid white;
+    background-position: left;
+    background: linear-gradient(to right, transparent 33%, blue 66%, red 100%);
+    background-size: 300% 100%;
+    overflow: hidden;
+    color: white;
+    top:70%;
+    font-size: 2.5rem;
+    transition: all .3s;
+    &:hover {
+        background-position: right;
+    }
+}

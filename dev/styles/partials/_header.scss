@@ -8,9 +8,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(to bottom right,#323232,#323232);
+        opacity: .6;
+    }
     &__container{
         background-color: $primaryColorOpacity;
         clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 80%);
+        background-color: transparent;
         margin: 0 auto;
         height: 30vh;
         width: 100%;
@@ -27,11 +38,14 @@
 
     }
     &__text {
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 600;
+        font-size: 6rem;
         & span {
-            font-family: 'Source Sans Pro', sans-serif;
+            font-family: 'Playfair Display', serif;
             color: $accentFontColor;
+            font-size: 3.6rem;
+            font-weight: 400;
         }
         color: $primaryFontColor;
         // text-transform: uppercase;
@@ -41,7 +55,7 @@
         &--left {
             right: 0px;
             &--end {
-                right: -200px;  
+                right: -200px;
             }
         }
         &--right {
@@ -65,3 +79,4 @@
     }
 
 }
+

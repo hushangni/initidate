@@ -138,6 +138,24 @@ ul {
   padding: 0;
   margin: 0; }
 
+.button {
+  position: absolute;
+  border-radius: 30px;
+  padding: 15px 27px;
+  border: 2px solid white;
+  background-position: left;
+  background: -webkit-gradient(linear, left top, right top, color-stop(33%, transparent), color-stop(66%, blue), to(red));
+  background: linear-gradient(to right, transparent 33%, blue 66%, red 100%);
+  background-size: 300% 100%;
+  overflow: hidden;
+  color: white;
+  top: 70%;
+  font-size: 2.5rem;
+  -webkit-transition: all .3s;
+  transition: all .3s; }
+  .button:hover {
+    background-position: right; }
+
 html {
   font-size: 62.5%; }
 
@@ -156,10 +174,21 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
+  .header:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#323232), to(#323232));
+    background-image: linear-gradient(to bottom right, #323232, #323232);
+    opacity: .6; }
   .header__container {
-    background-color: rgba(139, 0, 0, 0.733);
+    background-color: rgba(86, 99, 138, 0.733);
     -webkit-clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 80%);
             clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 80%);
+    background-color: transparent;
     margin: 0 auto;
     height: 30vh;
     width: 100%;
@@ -175,16 +204,19 @@ html {
       position: relative;
       overflow: hidden; }
   .header__text {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 6rem;
     color: white;
     position: absolute;
     top: 35%;
     -webkit-transition: .4s;
     transition: .4s; }
     .header__text span {
-      font-family: 'Source Sans Pro', sans-serif;
-      color: black; }
+      font-family: 'Playfair Display', serif;
+      color: #ffcc00;
+      font-size: 3.6rem;
+      font-weight: 400; }
     .header__text--left {
       right: 0px; }
       .header__text--left--end {
@@ -207,11 +239,11 @@ html {
   height: 100vh;
   border: 1px solid black; }
   .section1 {
-    background-color: darkred; }
+    background-color: #56638A; }
   .section2 {
     background-color: #323232; }
   .section3 {
-    background-color: darkred; }
+    background-color: #56638A; }
   .section4 {
     background-color: #323232; }
   .section--results {
