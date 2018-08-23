@@ -121,13 +121,14 @@ app.getCocktail = (search)=> {
         }
     }).then((res)=> {
         console.log(res);
-        console.log(res.drinks);
-        console.log(res.drinks.length);
+        
         console.log(app.getRandNum(res.drinks.length));
         app.randomDrinkNumber = app.getRandNum(res.drinks.length);
         
 
-        const newSearch = `filter.php?i=Wine`
+        const newSearch = `filter.php?i=${app.drinkType}`;
+        console.log(newSearch);
+        
 
         $.ajax({
             url: `${app.cocktailBaseURL}${newSearch}`,
@@ -135,14 +136,25 @@ app.getCocktail = (search)=> {
             dataType: 'json',
             data: {
                 key: '1'
-            }
-        }).then((res)=>{
-            console.log(res);
-            console.log(app.randomDrinkNumber);
-            
-            console.log(res.drinks[2]);
-            console.log(res.drinks[2].idDrink);
-            
+            }   
+        }).then((res)=>{            
+            // random array for drink - get ID
+            console.log(res.drinks[app.randomDrinkNumber].idDrink);
+            const getDrinkById = res.drinks[app.randomDrinkNumber].idDrink;
+
+            $.ajax({
+                url: `${app.cocktailBaseURL}lookup.php?i=${getDrinkById}`,
+                method: 'GET',
+                dataType: 'json',
+                data: {
+                    key: '1'
+                }
+            }).then((res) => {
+                // grab drink data
+                console.log(res);
+                console.log(res.drinks[0]);
+
+            });
         });
         
 
@@ -182,10 +194,10 @@ app.events = () => {
         const drinkCategory = $('input[name=category]:checked').val();
         const drinkArray = app.cocktailCategory[alcholic][drinkCategory];
         const drinkNumber = app.getRandNum(drinkArray.length);
-        const drinkType = drinkArray[drinkNumber];
+        app.drinkType = drinkArray[drinkNumber];
         
         // get array of drinks by type - wine/shake/etc
-        app.getCocktail(`filter.php?i=${drinkType}`);
+        app.getCocktail(`filter.php?i=${app.drinkType}`);
     });
 
     $('.another-movie').on('click', function(e) {
