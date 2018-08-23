@@ -121,6 +121,30 @@ app.getCocktail = (search)=> {
         }
     }).then((res)=> {
         console.log(res);
+        console.log(res.drinks);
+        console.log(res.drinks.length);
+        console.log(app.getRandNum(res.drinks.length));
+        app.randomDrinkNumber = app.getRandNum(res.drinks.length);
+        
+
+        const newSearch = `filter.php?i=Wine`
+
+        $.ajax({
+            url: `${app.cocktailBaseURL}${newSearch}`,
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                key: '1'
+            }
+        }).then((res)=>{
+            console.log(res);
+            console.log(app.randomDrinkNumber);
+            
+            console.log(res.drinks[2]);
+            console.log(res.drinks[2].idDrink);
+            
+        });
+        
 
     })
 }
@@ -172,15 +196,7 @@ app.events = () => {
 
 // init function
 app.init = () => {
-    // testing genre: action and userRating: 8 and below
-    // there are specific filters(end points) depending on ingredients/etc
-    // app.getCocktail('filter.php?i=Vodka');
-    // app.getCocktail('lookup.php?i=13060');
-    // app.getCocktail('filter.php?a=Non_Alcoholic');
-    // app.getCocktail('lookup.php?i=12560');
-    // app.getCocktail('lookup.php?i=12654');
-    // app.getCocktail('lookup.php?i=12770');
-    app.getCocktail('lookup.php?i=12720');
+    
 
     app.events();
 }
