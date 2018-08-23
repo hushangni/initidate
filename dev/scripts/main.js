@@ -31,32 +31,23 @@ app.moviesGenreIDs = {
 
 // cocktail properties
 app.cocktailBaseURL = 'https://www.thecocktaildb.com/api/json/v1/1/';
-// app.cocktailSearchAlc = ['filter.php?a=Non_Alcoholic','filter.php?a=Alcoholic'];
-// app.cocktailFilterIngredient = `filter.php?i=${drinkIngredient}`;
-// app.coktailSearchId = `lookup.php?i=${drinkId}`;
+
 app.cocktailCategory = {
     Alcoholic: {
         first: ['Wine', 'Gin', 'Brandy'],
         friends: ['Tequila', 'Vodka', 'Rum'],
         relationship: ['Whiskey', 'Rum']
     },
+    // add literals?
     Non_Alcoholic: {
-        first: ['Float', 'Cocktail', 'Shake'],
-        friends: ['Milk', 'Other/Unknown'],
+        first: ['', ''],
+        friends: ['Milk', ''],
         relationship: ['Coffee', 'Tea']
     }
 }
 
 
 // PSEUDO
-
-// get drink by alc/none alc
-// app.getCocktail('filter.php?a=Non_Alcoholic');
-
-// filter results by strCategory
-
-// get an ID from a random drink 
-// retrieve the id - res[randomIndex].idDrink
 
 // search for the drink based on ID
 // app.getCocktail(`lookup.php?i=${drinkId}`);
@@ -127,7 +118,7 @@ app.getCocktail = (search)=> {
         
 
         const newSearch = `filter.php?i=${app.drinkType}`;
-        console.log(newSearch);
+        console.log(app.drinkType);
         
 
         $.ajax({
@@ -158,6 +149,38 @@ app.getCocktail = (search)=> {
         });
         
 
+    })
+}
+
+app.getDrink = ()=> {
+    $.ajax({
+        url: `${app.cocktailBaseURL}filter.php?a=Non_Alcoholic`,
+        method: 'GET',
+        dataType: 'json',
+        data: {
+            key: '1'
+        }
+    }).then((res)=>{
+        const randomDrinkNumber = app.getRandNum(res.drinks.length);
+        console.log(randomDrinkNumber);
+
+        const drinkId = res.drinks[randomDrinkNumber].idDrink;
+        console.log(drinkId);
+        
+
+        $.ajax({
+            url: `${app.cocktailBaseURL}lookup.php?i=${drinkId}`,
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                key: '1'
+            }
+        }).then((res)=>{
+            console.log(res);
+            
+        })
+        
+        
     })
 }
 
@@ -195,9 +218,15 @@ app.events = () => {
         const drinkArray = app.cocktailCategory[alcholic][drinkCategory];
         const drinkNumber = app.getRandNum(drinkArray.length);
         app.drinkType = drinkArray[drinkNumber];
+        console.log(app.drinkType);
         
+        if (alcholic === 'Alcoholic'){
+            console.log('woo');
+            app.getCocktail(`filter.php?i=${app.drinkType}`);
+        } else {
+            app.getDrink()
+        }
         // get array of drinks by type - wine/shake/etc
-        app.getCocktail(`filter.php?i=${app.drinkType}`);
     });
 
     $('.another-movie').on('click', function(e) {
@@ -208,7 +237,10 @@ app.events = () => {
 
 // init function
 app.init = () => {
+    // app.getCocktail(`filter.php?a=Non_Alcoholic`);
     
+    // app.getCocktail(`filter.php?i=Coffee`);
+    // app.getCocktail(`lookup.php?i=12770`);
 
     app.events();
 }
