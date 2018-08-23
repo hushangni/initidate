@@ -165,22 +165,81 @@ app.displayMovie = (movie) => {
     const title = movie.title;
     const imgUrl = movie.poster_path;
     const rating = movie.vote_average;
+    const releaseDate = movie.release_date;
+    const overview = movie.overview;
     $('.movies-result__container').empty();
+    // overview
+    // release_date
     $('.movies-result__container').append(`
-        <h3>${title}</h3>
-        <img src="${app.moviesImageURL +app.moviesImageWidth + imgUrl}">
-        <p class="movie-rating">${rating}</p>
+        <h3 class="result-title">${title}</h3>
+        <img src="${app.moviesImageURL +app.moviesImageWidth + imgUrl}" class="movie-image">
+
+        <div class="additional-movie-info">
+            <p class="movie-rating">${rating}</p>
+            <p class="movie-release-date">${releaseDate}</p>
+            <p class="movie-overview">${overview}</p>
+        </div>
     `);
+}
+
+app.cleanObject = (object) => {
+    for (let propName in object) {
+        if (object[propName] === "") {
+            delete object[propName];
+        }
+    }
 }
 
 app.displayDrink = (drink) => {
     const name = drink.strDrink;
     const imgUrl = drink.strDrinkThumb;
+
+    const ingredients = Object.keys(drink).filter(function(k) {
+        return k.indexOf('strIngredient') == 0;
+    }).reduce(function(newKey, k) {
+        newKey[k] = drink[k].trim();
+        return newKey;
+    }, {});
+
+    const measurements = Object.keys(drink).filter(function (k) {
+        return k.indexOf('strMeasure') == 0;
+    }).reduce(function (newKey, k) {
+        newKey[k] = drink[k].trim();
+        return newKey;
+    }, {});
+
+    const instructions = drink.strInstructions;
+
+    app.cleanObject(ingredients);
+    app.cleanObject(measurements);
+
+    const measurementsList = $('<ul>').addClass('measurement-list');
+    const ingredientList = $('<ul>').addClass('ingredient-list');
+
+    for (let prop in measurements) {
+        const li = $('<li>').text(measurements[prop]);
+        measurementsList.append(li);
+    }
+
+    for (let prop in ingredients) {
+        const li = $('<li>').text(ingredients[prop]);
+        ingredientList.append(li);
+    }
+
+
     $('.drinks-result__container').empty();
     $('.drinks-result__container').append(`
-        <h3>${name}</h3>
-        <img src="${imgUrl}">
+        <h3 class="result-title">${name}</h3>
+        <img src="${imgUrl}" class="drink-image">
+
+        <div class="additional-drink-info">
+            <div class="ingredients-container">
+            </div>
+        </div>
     `);
+
+    $('.ingredients-container').append(measurementsList, ingredientList);
+    $('.additional-drink-info').append(`<p>${instructions}</p>`);
 }
 
 app.generateDrink = (alcoholic) => {
@@ -222,6 +281,11 @@ app.events = () => {
     $('.another-drink').on('click', function(e) {
         e.preventDefault();
         app.generateDrink(app.alcoholic);
+    })
+
+    $('#planAnother').on('click', function(e) {
+        e.preventDefault();
+        location.reload();
     })
 };
 
