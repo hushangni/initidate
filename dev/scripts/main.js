@@ -29,6 +29,43 @@ app.moviesGenreIDs = {
     cuddles: [27, 10749, 53]
 };
 
+// cocktail properties
+app.cocktailBaseURL = 'https://www.thecocktaildb.com/api/json/v1/1/';
+// app.cocktailSearchAlc = ['filter.php?a=Non_Alcoholic','filter.php?a=Alcoholic'];
+// app.cocktailFilterIngredient = `filter.php?i=${drinkIngredient}`;
+// app.coktailSearchId = `lookup.php?i=${drinkId}`;
+app.cocktailCategory = {
+    Alcoholic: {
+        first: ['Wine', 'Gin', 'Brandy'],
+        friends: ['Tequila', 'Vodka', 'Rum'],
+        relationship: ['Whiskey', 'Rum']
+    },
+    Non_Alcoholic: {
+        first: ['Float', 'Cocktail', 'Shake'],
+        friends: ['Milk', 'Other/Unknown'],
+        relationship: ['Coffee', 'Tea']
+    }
+}
+
+
+// PSEUDO
+
+// get drink by alc/none alc
+// app.getCocktail('filter.php?a=Non_Alcoholic');
+
+// filter results by strCategory
+
+// get an ID from a random drink 
+// retrieve the id - res[randomIndex].idDrink
+
+// search for the drink based on ID
+// app.getCocktail(`lookup.php?i=${drinkId}`);
+
+// display the name - strDrink
+// display the ingredients - strIngredient1-x
+// display the measurements - strMeasure1-x
+// display instructions - strInstructions
+
 // app.getMovies(userGenre, userRating);
 // requesting movie info from moviesDB API
 app.getMovies = (userGenre, userRating) => {
@@ -76,7 +113,7 @@ app.getMovies = (userGenre, userRating) => {
 
 app.getCocktail = (search)=> {
     $.ajax({
-        url: `https://www.thecocktaildb.com/api/json/v1/1/${search}`,
+        url: `${app.cocktailBaseURL}${search}`,
         method: 'GET',
         dataType: 'json',
         data: {
@@ -115,6 +152,16 @@ app.events = () => {
         app.userGenre = app.moviesGenreIDs[genreCategory][genreIndex];
         app.userRating = parseInt($('input[name=rating]:checked').val());
         app.getMovies(app.userGenre, app.userRating);
+
+        //cocktail api
+        const alcholic = $('input[name=alcohol]:checked').val();
+        const drinkCategory = $('input[name=category]:checked').val();
+        const drinkArray = app.cocktailCategory[alcholic][drinkCategory];
+        const drinkNumber = app.getRandNum(drinkArray.length);
+        const drinkType = drinkArray[drinkNumber];
+        
+        // get array of drinks by type - wine/shake/etc
+        app.getCocktail(`filter.php?i=${drinkType}`);
     });
 
     $('.another-movie').on('click', function(e) {
@@ -129,7 +176,7 @@ app.init = () => {
     // there are specific filters(end points) depending on ingredients/etc
     // app.getCocktail('filter.php?i=Vodka');
     // app.getCocktail('lookup.php?i=13060');
-    app.getCocktail('filter.php?a=Non_Alcoholic');
+    // app.getCocktail('filter.php?a=Non_Alcoholic');
     // app.getCocktail('lookup.php?i=12560');
     // app.getCocktail('lookup.php?i=12654');
     // app.getCocktail('lookup.php?i=12770');
