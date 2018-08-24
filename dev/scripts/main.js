@@ -5,7 +5,7 @@ app.submit = $('#submit');
 // moviesDB properties
 app.moviesBaseURL = 'https://api.themoviedb.org/3';
 app.moviesImageURL = 'https://image.tmdb.org/t/p/';
-app.moviesImageWidth = 'w185';
+app.moviesImageWidth = 'w780';
 app.moviesAPIKey = '0f074982f0e6a999d59865dff2184e86';
 app.moviePage;
 app.moviesGenreIDs = {
@@ -180,6 +180,10 @@ app.displayMovie = (movie) => {
             <p class="movie-overview">${overview}</p>
         </div>
     `);
+
+    // $('.movies-result').css('background', `url(${app.moviesImageURL + app.moviesImageWidth + imgUrl})`);
+    // $('.movies-result').css('background-repeat', 'no-repeat');
+    // $('.movies-result').css('background-size', '100%');
 }
 
 app.cleanObject = (object) => {
@@ -240,6 +244,8 @@ app.displayDrink = (drink) => {
 
     $('.ingredients-container').append(measurementsList, ingredientList);
     $('.additional-drink-info').append(`<p>${instructions}</p>`);
+
+    // $('.drinks-result').css('background', `url(${imgUrl})`);
 }
 
 app.generateDrink = (alcoholic) => {
