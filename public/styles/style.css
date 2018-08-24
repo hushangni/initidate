@@ -262,13 +262,15 @@ ul {
                 animation: header-right-end .8s linear forwards 1.2s;
         left: -300px; }
   .header__subheader {
+    width: 100%;
+    text-align: center;
+    left: 50%;
     font-family: 'Playfair Display', serif;
     font-weight: 600;
     font-size: 3rem;
     position: absolute;
     top: 42%;
     opacity: 0;
-    left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
     color: white;
@@ -366,7 +368,7 @@ ul {
 @-webkit-keyframes mainMenuButton {
   0% {
     opacity: 0; }
-  50% {
+  33% {
     opacity: 1;
     background-position: left; }
   100% {
@@ -376,7 +378,7 @@ ul {
 @keyframes mainMenuButton {
   0% {
     opacity: 0; }
-  50% {
+  33% {
     opacity: 1;
     background-position: left; }
   100% {
