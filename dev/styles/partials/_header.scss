@@ -54,12 +54,12 @@
         }
         &__left {
             // width:58%;
-            
-            animation: sideLeft 0.8s linear forwards 1.2s
+
+            animation: sideLeft 0.8s linear forwards 1.5s
         }
         &__right {
             // width: 42%;
-            animation: sideRight 0.8s linear forwards 1.2s
+            animation: sideRight 0.8s linear forwards 1.5s
         }
 
     }
@@ -84,17 +84,17 @@
         animation-duration: 1s;
         &--left {
             right: 0px;
-            animation: header-left-start .8s linear forwards 1.2s;
+            animation: header-left-start .8s linear forwards 1.5s;
             &--end {
-                animation: header-left-end .8s linear forwards 1.2s;
+                animation: header-left-end .8s linear forwards 1.5s;
                 right: -300px;
             }
         }
         &--right {
-            animation: header-right-start .8s linear forwards 1.2s;
+            animation: header-right-start .8s linear forwards 1.5s;
             left: 0px;
             &--end {
-                animation: header-right-end .8s linear forwards 1.2s;
+                animation: header-right-end .8s linear forwards 1.5s;
                 left: -300px;
             }
         }
@@ -113,7 +113,7 @@
         color: white;
         animation: subheader .6s linear forwards 2.6s;
     }
-   
+
 
 }
 

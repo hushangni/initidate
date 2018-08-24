@@ -6,13 +6,13 @@
         background-color: $primaryColor;
     }
     &2 {
-       background-color: $secondaryColor; 
+       background-color: $secondaryColor;
     }
     &3 {
         background-color: $primaryColor;
     }
     &4 {
-       background-color: $secondaryColor; 
+       background-color: $secondaryColor;
     }
     &--results{
         background-color: $resultsPage;
@@ -20,23 +20,55 @@
 
     & h3 {
         @include header;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        margin: 0;
     }
 }
 
 form {
     width: 100%;
-    height: 90%;
+    height: calc(100% - 40px);
+    padding: 50px 0;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     border: 1px solid white;
 }
 
 label {
     width: 100%;
-    border: 1px solid yellow;
+    max-width: 250px;
+    font-size: 2rem;
+    padding: 30px 0;
+    text-align: center;
+    border: 1px solid white;
+    color: white;
     cursor: pointer;
+    box-shadow:
+    0.3em 0.3em 0 0 blue,
+    inset 0.3em 0.3em 0 0 blue;
+    transition: 0.3s;
+    color: blue;
+
     &:hover {
-        background-color: $buttonHover;
+        // background-color: $buttonHover;
+        border-color: yellow;
+        color: white;
+        box-shadow:
+            0 0 0 0 yellow,
+            inset 6em 3.5em 0 0 yellow;
+    }
+
+    &:focus {
+        border-color: yellow;
+        color: white;
+        box-shadow:
+      0 0 0 0 yellow,
+      inset 6em 3.5em 0 0 yellow;
     }
     &::before {
 
@@ -44,6 +76,22 @@ label {
     &::after {
 
     }
+}
+
+
+
+// Multiple shadows, one on the outside, another on the inside
+.offset {
+  box-shadow:
+    0.3em 0.3em 0 0 var(--color),
+    inset 0.3em 0.3em 0 0 var(--color);
+
+  &:hover,
+  &:focus {
+    box-shadow:
+      0 0 0 0 var(--hover),
+      inset 6em 3.5em 0 0 var(--hover);
+  }
 }
 
 input[type='radio'] {
