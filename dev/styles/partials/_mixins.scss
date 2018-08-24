@@ -1,6 +1,3 @@
-html {
-    font-size: 62.5%;
-}
 
 $primaryFont: 'Playfair Display', serif;
 $secondaryFont: 'Source Sans Pro', sans-serif;
@@ -19,6 +16,8 @@ $buttonHover: red;
 
 
 $resultsPage: darkred;
+
+
 
 @mixin header {
     font-family: $primaryFont;

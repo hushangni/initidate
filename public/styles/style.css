@@ -132,7 +132,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  font-family: "Source Sans Pro", sans-serif; }
 
 li {
   list-style: none; }
@@ -220,11 +221,11 @@ ul {
       position: relative;
       overflow: hidden; }
     .header__container__left {
-      -webkit-animation: sideLeft 0.8s linear forwards 1.2s;
-              animation: sideLeft 0.8s linear forwards 1.2s; }
+      -webkit-animation: sideLeft 0.8s linear forwards 1.5s;
+              animation: sideLeft 0.8s linear forwards 1.5s; }
     .header__container__right {
-      -webkit-animation: sideRight 0.8s linear forwards 1.2s;
-              animation: sideRight 0.8s linear forwards 1.2s; }
+      -webkit-animation: sideRight 0.8s linear forwards 1.5s;
+              animation: sideRight 0.8s linear forwards 1.5s; }
   .header__text {
     top: 40%;
     -webkit-transform: translateY(-50%);
@@ -247,19 +248,19 @@ ul {
       font-weight: 400; }
     .header__text--left {
       right: 0px;
-      -webkit-animation: header-left-start .8s linear forwards 1.2s;
-              animation: header-left-start .8s linear forwards 1.2s; }
+      -webkit-animation: header-left-start .8s linear forwards 1.5s;
+              animation: header-left-start .8s linear forwards 1.5s; }
       .header__text--left--end {
-        -webkit-animation: header-left-end .8s linear forwards 1.2s;
-                animation: header-left-end .8s linear forwards 1.2s;
+        -webkit-animation: header-left-end .8s linear forwards 1.5s;
+                animation: header-left-end .8s linear forwards 1.5s;
         right: -300px; }
     .header__text--right {
-      -webkit-animation: header-right-start .8s linear forwards 1.2s;
-              animation: header-right-start .8s linear forwards 1.2s;
+      -webkit-animation: header-right-start .8s linear forwards 1.5s;
+              animation: header-right-start .8s linear forwards 1.5s;
       left: 0px; }
       .header__text--right--end {
-        -webkit-animation: header-right-end .8s linear forwards 1.2s;
-                animation: header-right-end .8s linear forwards 1.2s;
+        -webkit-animation: header-right-end .8s linear forwards 1.5s;
+                animation: header-right-end .8s linear forwards 1.5s;
         left: -300px; }
   .header__subheader {
     width: 100%;
@@ -404,24 +405,67 @@ ul {
     text-transform: uppercase;
     color: white;
     font-size: 2rem;
-    text-align: center; }
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 60px;
+    margin: 0; }
 
 form {
   width: 100%;
-  height: 90%;
+  height: calc(100% - 40px);
+  padding: 50px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border: 1px solid white; }
 
 label {
   width: 100%;
-  border: 1px solid yellow;
-  cursor: pointer; }
+  max-width: 250px;
+  font-size: 2rem;
+  padding: 30px 0;
+  text-align: center;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+  -webkit-box-shadow: 0.3em 0.3em 0 0 blue, inset 0.3em 0.3em 0 0 blue;
+          box-shadow: 0.3em 0.3em 0 0 blue, inset 0.3em 0.3em 0 0 blue;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: blue; }
   label:hover {
-    background-color: red; }
+    border-color: yellow;
+    color: white;
+    -webkit-box-shadow: 0 0 0 0 yellow, inset 6em 3.5em 0 0 yellow;
+            box-shadow: 0 0 0 0 yellow, inset 6em 3.5em 0 0 yellow; }
+  label:focus {
+    border-color: yellow;
+    color: white;
+    -webkit-box-shadow: 0 0 0 0 yellow, inset 6em 3.5em 0 0 yellow;
+            box-shadow: 0 0 0 0 yellow, inset 6em 3.5em 0 0 yellow; }
+
+.offset {
+  -webkit-box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
+          box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color); }
+  .offset:hover, .offset:focus {
+    -webkit-box-shadow: 0 0 0 0 var(--hover), inset 6em 3.5em 0 0 var(--hover);
+            box-shadow: 0 0 0 0 var(--hover), inset 6em 3.5em 0 0 var(--hover); }
 
 input[type='radio'] {
   display: none; }
