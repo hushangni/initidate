@@ -24,7 +24,6 @@ ul {
     background-size: 300% 100%;
     overflow: hidden;
     color: white;
-    top: 64%;
     font-size: 2.5rem;
     transition: all 1s;
     &:hover {
@@ -68,6 +67,7 @@ ul {
     &--header {
         opacity: 0;
         animation: mainMenuButton 1.5s linear forwards 4.2s;
+        top: 64%;
     }
 
 }
