@@ -15,20 +15,60 @@ ul {
 
 .button {
     position: absolute;
-    border-radius: 30px;
+    border-radius: 34px;
     padding: 15px 27px;
-    border: 2px solid white;
+    border: 2px solid $buttonColor;
+    font-weight: 700;
     background-position: left;
-    background: linear-gradient(to right, transparent 33%, $primaryColor 66%);
+    background: linear-gradient(to right, transparent 33%, $buttonColor 66%);
     background-size: 300% 100%;
     overflow: hidden;
     color: white;
-    top:70%;
+    top: 64%;
     font-size: 2.5rem;
     transition: all 1s;
-    opacity: 0;
-    animation: mainMenuButton 1.5s linear forwards 4.2s;
     &:hover {
         background-position: right;
     }
+
+    &:after {
+    content: "";
+    position: absolute;
+    top: -110%;
+    left: -210%;
+    width: 200%;
+    height: 150%;
+    opacity: 0;
+    transform: rotate(30deg);
+    background: rgba(255, 255, 255, 0.6);
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.13) 0%,
+        rgba(255, 255, 255, 0.13) 77%,
+        rgba(255, 255, 255, 0.5) 92%,
+        rgba(255, 255, 255, 0.0) 100%
+    );
+    }
+
+    // btn hover states
+    &:hover:after {
+    opacity: 1;
+    top: -30%;
+    left: -30%;
+    transition-property: left, top, opacity;
+    transition-duration: 0.7s, 0.7s, 0.15s;
+    transition-timing-function: ease;
+    }
+
+    // btn active states
+    &:active:after {
+    opacity: 0;
+    }
+
+    &--header {
+        opacity: 0;
+        animation: mainMenuButton 1.5s linear forwards 4.2s;
+    }
+
 }
+

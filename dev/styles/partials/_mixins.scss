@@ -10,6 +10,7 @@ $secondaryColor: #323232;
 $primaryFontColor: white;
 $secondaryFontColor: black;
 $accentFontColor: #ffcc00;
+$buttonColor: #ddab0a;
 
 
 $buttonHover: red;
@@ -21,8 +22,9 @@ $resultsPage: darkred;
 
 @mixin header {
     font-family: $primaryFont;
-    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    font-weight: 400;
     color: white;
-    font-size: 2rem;
+    font-size: 2.5rem;
     text-align: center;
 }
