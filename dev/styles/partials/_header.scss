@@ -190,9 +190,13 @@
         opacity: 1;
         background-position: left;
     }
-    100% {
+    99% {
         opacity: 1;
         background-position: right;
+    }
+    100%{
+        opacity: 1;
+        background-color: $buttonColor;
     }
 }
 
