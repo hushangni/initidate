@@ -154,7 +154,6 @@ ul {
   background-size: 300% 100%;
   overflow: hidden;
   color: white;
-  top: 64%;
   font-size: 2.5rem;
   -webkit-transition: all 1s;
   transition: all 1s; }
@@ -188,7 +187,8 @@ ul {
   .button--header {
     opacity: 0;
     -webkit-animation: mainMenuButton 1.5s linear forwards 4.2s;
-            animation: mainMenuButton 1.5s linear forwards 4.2s; }
+            animation: mainMenuButton 1.5s linear forwards 4.2s;
+    top: 64%; }
 
 #heroVideo {
   position: absolute;
@@ -528,11 +528,26 @@ input[type='radio'] {
   position: relative; }
 
 .result {
-  position: absolute;
   border: 1px solid yellow;
-  background-color: red;
+  background-color: #444;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  position: relative; }
+  .result-title {
+    height: 30px; }
+
+.drinks-result__container img {
+  border-radius: 15px;
+  width: calc(100% - 100px);
+  margin: 50px; }
+
+.movies-result__container img {
+  border-radius: 15px;
+  width: calc(100% - 100px);
+  margin: 50px; }
+
+.another-drink {
+  top: calc(100% - 90px); }
 
 .additional-drink-info {
   display: none; }
