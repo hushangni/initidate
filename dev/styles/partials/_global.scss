@@ -77,10 +77,23 @@ ul {
 
 }
 
+section.made-by {
+    height: 42px;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background-color: #ccc;
 
-// WHY CANT I GET RID OF THE HORIZONTAL SCROLLING DEAD SPACE IN THE HEADER?????
-// html, body {
-//     max-width: 100%;
-//     overflow-x: hidden;
-// }
+    p {
+        margin: 0;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+        font-weight: 700;
+    }
+}
 

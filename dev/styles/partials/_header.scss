@@ -1,18 +1,16 @@
 .logo-wrapper {
     // position: relative;
-    
-    
     z-index: 10;
     img {
         position: absolute;
-        top: 10px;
-        left: 10px;
+        top: 25px;
+        left: 30px;
         width: 50px;
         height: 50px;
     }
     h1 {
         position: absolute;
-        top: 10px;
+        top: 15px;
         font-size: 3rem;
         color: white;
         left: -200px;
@@ -26,6 +24,44 @@
     }
 }
 
+.question-button {
+    z-index: 2;
+    position: absolute;
+    background-color: $buttonColor;
+    padding: 7px 20px;
+    font-size: 3rem;
+    border: none;
+    top: 25px;
+    right: 30px;
+}
+
+.question-modal {
+    z-index: 2;
+    position: absolute;
+    background-color: $buttonColor;
+    width: 300px;
+    height: 330px;
+    display:none;
+    padding: 25px;
+    color: white;
+    border-radius: 3px;
+    font-size: 1.8rem;
+    text-align: left;
+
+    .additional-instructions {
+        display: none;
+    }
+
+    h3 {
+        font-family: $primaryFont;
+        text-align: center;
+        font-size: 2.3rem;
+    }
+}
+
+.show {
+    display: block;
+}
 
 #heroVideo {
     position: absolute;
@@ -42,12 +78,13 @@
         left: 0;
         background: rgba(0, 0, 0, 0.5);
     }
+    display: none;
 }
 
 .header {
     height: 100vh;
     width: 100%;
-    // background: url('../../images/martini-cocktail-on-glass-hd-wallpaper.jpg');
+    background: url('../../images/mobile-background.jpg');
     background-size: cover;
     background-position: right;
     display: flex;
@@ -60,12 +97,12 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background-image: linear-gradient(to bottom right,#323232,#323232);
-        opacity: .6;
+        background-image: url(../../images/mobile-background.jpg);
+        background-size: cover;
+        opacity: 0.5;
     }
     &__container{
         background-color: $primaryColorOpacity;
-        // clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 80%);
         background-color: #444;
         margin: 0 auto;
         height: 100%;
@@ -150,7 +187,7 @@
         left: -200px;
     }
     100% {
-        left: 60px;
+        left: 85px;
     }
 }
 
@@ -243,11 +280,20 @@
     }
 }
 
+@media (min-width:401px){
+    .question-modal {
+        width: 400px;
+        height: 400px;
 
-// I think we need to delete the animation.
+        .additional-instructions {
+            display: block;
+        }
+    }
 
+    #heroVideo {
+        display: block;
+    }
 
-@media (min-width:400px){
     .header__container {
         &__right {
             width: calc(50% - 30px);
@@ -283,7 +329,7 @@
         }
     }
 
-
+}
 
 
 
@@ -305,7 +351,6 @@
     }
 }
 
-}
 
 
 

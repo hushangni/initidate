@@ -9,9 +9,9 @@ app.moviesImageWidth = 'w780';
 app.moviesAPIKey = '0f074982f0e6a999d59865dff2184e86';
 app.moviePage;
 app.moviesGenreIDs = {
-    convo: [80, 99, 9648],
-    laughs: [35, 12, 18, 10751],
-    cuddles: [27, 10749, 53]
+    convo: [80, 99, 9648], // crime, documentary, mystery
+    laughs: [35, 12, 18, 10751], // comedy, adventure, drama, family
+    cuddles: [27, 10749, 53] // horror, romance, thriller
 };
 
 // cocktail properties
@@ -29,7 +29,6 @@ app.cocktailCategory = {
         relationship: ['Coffee', 'Tea']
     }
 }
-
 
 // app.getMovies(userGenre, userRating);
 // requesting movie info from moviesDB API
@@ -65,7 +64,6 @@ app.getMovies = (userGenre, userRating) => {
         }).then((res) => {
             // on random page
             const movie = res.results[app.getRandNum(20)]
-            console.log(movie);
 
             // put movie into HTML
             app.displayMovie(movie);
@@ -73,6 +71,8 @@ app.getMovies = (userGenre, userRating) => {
     })
 };
 
+// app.getCocktail(cocktailID);
+// requesting cocktail(alcoholic) information from cocktailDB
 app.getCocktail = (search)=> {
     $.ajax({
         url: `${app.cocktailBaseURL}${search}`,
@@ -82,15 +82,8 @@ app.getCocktail = (search)=> {
             key: '1'
         }
     }).then((res)=> {
-        console.log(res);
-
-        console.log(app.getRandNum(res.drinks.length));
         app.randomDrinkNumber = app.getRandNum(res.drinks.length);
-
-
         const newSearch = `filter.php?i=${app.drinkType}`;
-        console.log(app.drinkType);
-
 
         $.ajax({
             url: `${app.cocktailBaseURL}${newSearch}`,
@@ -100,8 +93,6 @@ app.getCocktail = (search)=> {
                 key: '1'
             }
         }).then((res)=>{
-            // random array for drink - get ID
-            console.log(res.drinks[app.randomDrinkNumber].idDrink);
             const getDrinkById = res.drinks[app.randomDrinkNumber].idDrink;
 
             $.ajax({
@@ -112,18 +103,14 @@ app.getCocktail = (search)=> {
                     key: '1'
                 }
             }).then((res) => {
-                // grab drink data
-                console.log(res);
-                console.log(res.drinks[0]);
                 app.displayDrink(res.drinks[0]);
-
             });
         });
-
-
     })
 }
 
+// app.getDrink();
+// requesting drink(non-alcoholic) information from cocktailDB
 app.getDrink = ()=> {
     $.ajax({
         url: `${app.cocktailBaseURL}filter.php?a=Non_Alcoholic`,
@@ -134,11 +121,7 @@ app.getDrink = ()=> {
         }
     }).then((res)=>{
         const randomDrinkNumber = app.getRandNum(res.drinks.length);
-        console.log(randomDrinkNumber);
-
         const drinkId = res.drinks[randomDrinkNumber].idDrink;
-        console.log(drinkId);
-
 
         $.ajax({
             url: `${app.cocktailBaseURL}lookup.php?i=${drinkId}`,
@@ -148,19 +131,19 @@ app.getDrink = ()=> {
                 key: '1'
             }
         }).then((res)=>{
-            console.log(res);
             app.displayDrink(res.drinks[0]);
         })
-
-
     })
 }
 
-// return random number
+// app.getRandNum(num);
+// returns a random number from 0 up to num (exclusive)
 app.getRandNum = (num) => {
     return Math.floor(Math.random() * num);
 }
 
+// app.displayMovie(movie)
+// puts movie information on to html
 app.displayMovie = (movie) => {
     const title = movie.title;
     const imgUrl = movie.poster_path;
@@ -168,15 +151,14 @@ app.displayMovie = (movie) => {
     const releaseDate = movie.release_date;
     const overview = movie.overview;
     $('.movies-result__container').empty();
-    // overview
-    // release_date
     $('.movies-result__container').append(`
         <h3 class="result-title">${title}</h3>
 
         <button class="button more-info more-info--movies">i</button>
 
         <div class="results__image-container">
-        <img src="${app.moviesImageURL +app.moviesImageWidth + imgUrl}" class="movie-image">
+            <img src="images/ticket.svg" class="ticket-svg">
+            <img src="${app.moviesImageURL +app.moviesImageWidth + imgUrl}" class="movie-image">
         </div>
 
 
@@ -188,12 +170,10 @@ app.displayMovie = (movie) => {
             <p class="movie-overview">${overview}</p>
         </div>
     `);
-
-    // $('.movies-result').css('background', `url(${app.moviesImageURL + app.moviesImageWidth + imgUrl})`);
-    // $('.movies-result').css('background-repeat', 'no-repeat');
-    // $('.movies-result').css('background-size', '100%');
 }
 
+// app.cleanObject(object);
+// removes property names with no significant value from object
 app.cleanObject = (object) => {
     for (let propName in object) {
         if (object[propName] === "") {
@@ -202,6 +182,8 @@ app.cleanObject = (object) => {
     }
 }
 
+// app.displayDrink(drink)
+// puts drink information on to html
 app.displayDrink = (drink) => {
     const name = drink.strDrink;
     const imgUrl = drink.strDrinkThumb;
@@ -248,6 +230,7 @@ app.displayDrink = (drink) => {
         <button class="button more-info more-info--drinks">i</button>
 
         <div class="results__image-container">
+            <img src="images/cocktail.svg" class="cocktail-svg">
             <img src="${imgUrl}" class="drink-image">
         </div>
 
@@ -265,6 +248,8 @@ app.displayDrink = (drink) => {
     // $('.drinks-result').css('background', `url(${imgUrl})`);
 }
 
+// app.generateDrink(alcoholic);
+// calls appropraite alcoholic/non-alcohlic API request functions
 app.generateDrink = (alcoholic) => {
     if (alcoholic === 'Alcoholic') {
         app.getCocktail(`filter.php?i=${app.drinkType}`);
@@ -273,6 +258,8 @@ app.generateDrink = (alcoholic) => {
     }
 }
 
+// app.events();
+// kicks off all event listeners on app
 app.events = () => {
     $('#submit').on('click', function(e) {
         e.preventDefault();
@@ -332,6 +319,12 @@ app.events = () => {
         $('.additional-movie-info').css('display', 'none');
     });
 
+    $('.question-button').on('click', function(e) {
+        e.preventDefault();
+        $('.question-modal').toggleClass('show');
+        $('.question-modal').hasClass('show') ? $('.question-button').html("X") : $('.question-button').html("?");
+    })
+
     $(".button--header").click(function () {
         $([document.documentElement, document.body]).animate({
             scrollTop: $("#section1").offset().top
@@ -341,25 +334,25 @@ app.events = () => {
     $('input[name=category]').click(function () {
         $([document.documentElement, document.body]).animate({
             scrollTop: $("#section2").offset().top
-        }, 1000);
+        }, 700);
     });
 
     $('input[name=genre]').click(function () {
         $([document.documentElement, document.body]).animate({
             scrollTop: $("#section3").offset().top
-        }, 1000);
+        }, 700);
     });
 
     $('input[name=rating]').click(function () {
         $([document.documentElement, document.body]).animate({
             scrollTop: $("#section4").offset().top
-        }, 1000);
+        }, 700);
     });
 
     $('input[name=alcohol]').click(function () {
         $([document.documentElement, document.body]).animate({
             scrollTop: $("#submit").offset().top
-        }, 1000);
+        }, 700);
     });
 
     $("#submit").click(function () {
@@ -373,16 +366,11 @@ app.events = () => {
 
 // init function
 app.init = () => {
-    // app.getCocktail(`filter.php?a=Non_Alcoholic`);
-
-    // app.getCocktail(`filter.php?i=Coffee`);
-    // app.getCocktail(`lookup.php?i=12770`);
     app.events();
 }
 
+// ready
 $(function() {
     console.log("ready");
     app.init();
 })
-
-
