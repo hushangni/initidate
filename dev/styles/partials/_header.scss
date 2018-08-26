@@ -19,7 +19,7 @@
 .header {
     height: 100vh;
     width: 100%;
-    background: url('../../images/martini-cocktail-on-glass-hd-wallpaper.jpg');
+    // background: url('../../images/martini-cocktail-on-glass-hd-wallpaper.jpg');
     background-size: cover;
     background-position: right;
     display: flex;
@@ -38,7 +38,7 @@
     &__container{
         background-color: $primaryColorOpacity;
         // clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 80%);
-        background-color: red;
+        background-color: #444;
         margin: 0 auto;
         height: 100%;
         width: 100%;
@@ -121,8 +121,11 @@
     0% {
         left: 0px;
     }
+    99% {
+        left: -250px;
+    }
     100% {
-        left: -300px;
+        opacity: 0;
     }
 }
 
@@ -130,8 +133,11 @@
     0% {
         right: 0px;
     }
+    99% {
+        right: -250px;
+    }
     100% {
-        right: -300px;
+        opacity: 0;
     }
 }
 
@@ -199,4 +205,76 @@
         background-color: $buttonColor;
     }
 }
+
+
+// I think we need to delete the animation.
+
+
+@media (min-width:400px){
+    .header__container {
+        &__right {
+            width: calc(50% - 30px);
+        }
+        &__left {
+            width: calc(50% + 30px);
+        }
+    }
+}
+
+
+@media (max-width: 400px){
+
+    .header__container {
+        &__right {
+            width: calc(50% - 20px);
+        }
+        &__left {
+            width: calc(50% + 20px);
+        }
+    }
+
+    .header {
+        &__text {
+            font-size: 4.3rem;
+            top: 42%;
+            & span {
+                font-size: 2.8rem;
+            }
+        }
+        &__subheader {
+            font-size: 2.5rem;
+        }
+    }
+
+
+
+
+
+@keyframes sideLeft {
+    0% {
+        width: 50%;
+    }
+    100% {
+        width: calc(50% + 20px);
+    }
+}
+
+@keyframes sideRight {
+    0% {
+        width: 50%;
+    }
+    100% {
+        width: calc(50% - 20px);
+    }
+}
+
+}
+
+
+
+
+
+
+
+
 
