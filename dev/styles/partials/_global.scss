@@ -13,6 +13,11 @@ ul {
     margin: 0;
 }
 
+.wrapper {
+    overflow: hidden;
+    width: 100vw;
+}
+
 .button {
     position: absolute;
     border-radius: 34px;
@@ -71,4 +76,11 @@ ul {
     }
 
 }
+
+
+// WHY CANT I GET RID OF THE HORIZONTAL SCROLLING DEAD SPACE IN THE HEADER?????
+// html, body {
+//     max-width: 100%;
+//     overflow-x: hidden;
+// }
 

@@ -142,6 +142,10 @@ ul {
   padding: 0;
   margin: 0; }
 
+.wrapper {
+  overflow: hidden;
+  width: 100vw; }
+
 .button {
   position: absolute;
   border-radius: 34px;
@@ -208,7 +212,6 @@ ul {
 .header {
   height: 100vh;
   width: 100%;
-  background: url("../../images/martini-cocktail-on-glass-hd-wallpaper.jpg");
   background-size: cover;
   background-position: right;
   display: -webkit-box;
@@ -232,7 +235,7 @@ ul {
     opacity: .6; }
   .header__container {
     background-color: rgba(86, 99, 138, 0.733);
-    background-color: red;
+    background-color: #444;
     margin: 0 auto;
     height: 100%;
     width: 100%;
@@ -308,26 +311,34 @@ ul {
 @-webkit-keyframes header-right-start {
   0% {
     left: 0px; }
+  99% {
+    left: -250px; }
   100% {
-    left: -300px; } }
+    opacity: 0; } }
 
 @keyframes header-right-start {
   0% {
     left: 0px; }
+  99% {
+    left: -250px; }
   100% {
-    left: -300px; } }
+    opacity: 0; } }
 
 @-webkit-keyframes header-left-start {
   0% {
     right: 0px; }
+  99% {
+    right: -250px; }
   100% {
-    right: -300px; } }
+    opacity: 0; } }
 
 @keyframes header-left-start {
   0% {
     right: 0px; }
+  99% {
+    right: -250px; }
   100% {
-    right: -300px; } }
+    opacity: 0; } }
 
 @-webkit-keyframes header-right-end {
   0% {
@@ -418,6 +429,45 @@ ul {
   100% {
     opacity: 1;
     background-color: #ddab0a; } }
+
+@media (min-width: 400px) {
+  .header__container__right {
+    width: calc(50% - 30px); }
+  .header__container__left {
+    width: calc(50% + 30px); } }
+
+@media (max-width: 400px) {
+  .header__container__right {
+    width: calc(50% - 20px); }
+  .header__container__left {
+    width: calc(50% + 20px); }
+  .header__text {
+    font-size: 4.3rem;
+    top: 42%; }
+    .header__text span {
+      font-size: 2.8rem; }
+  .header__subheader {
+    font-size: 2.5rem; }
+  @-webkit-keyframes sideLeft {
+    0% {
+      width: 50%; }
+    100% {
+      width: calc(50% + 20px); } }
+  @keyframes sideLeft {
+    0% {
+      width: 50%; }
+    100% {
+      width: calc(50% + 20px); } }
+  @-webkit-keyframes sideRight {
+    0% {
+      width: 50%; }
+    100% {
+      width: calc(50% - 20px); } }
+  @keyframes sideRight {
+    0% {
+      width: 50%; }
+    100% {
+      width: calc(50% - 20px); } } }
 
 .section {
   width: 100%;
@@ -525,32 +575,102 @@ input[type='radio'] {
     padding: 0; } }
 
 .section--results {
-  position: relative; }
+  height: 50vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  display: none; }
 
 .result {
-  border: 1px solid yellow;
   background-color: #444;
   width: 100%;
   height: 100%;
   position: relative; }
   .result-title {
-    height: 30px; }
+    height: 30px;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
 
-.drinks-result__container img {
-  border-radius: 15px;
+.result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  padding-bottom: 50px; }
+
+.drink-image,
+.movie-image {
   width: calc(100% - 100px);
-  margin: 50px; }
+  margin: 0 50px;
+  max-width: 400px;
+  height: calc(100% - 200px);
+  margin-top: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px; }
 
-.movies-result__container img {
-  border-radius: 15px;
-  width: calc(100% - 100px);
-  margin: 50px; }
-
+.another-movie,
 .another-drink {
-  top: calc(100% - 90px); }
+  bottom: 20px; }
 
 .additional-drink-info {
   display: none; }
 
 .additional-movie-info {
   display: none; }
+
+@media (min-width: 750px) {
+  .result {
+    background-color: #444;
+    width: 100%;
+    height: 100%;
+    position: relative; }
+    .result-title {
+      height: 30px;
+      -webkit-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: flex-end; }
+  .section--results {
+    height: 100vh;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row; }
+  .result {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 50%;
+    padding-bottom: 50px; }
+  .drink-image,
+  .movie-image {
+    width: calc(100% - 100px);
+    margin: 0 50px;
+    max-width: 400px;
+    height: calc(100% - 200px);
+    margin-top: 50px;
+    -o-object-fit: cover;
+       object-fit: cover; }
+  .another-movie,
+  .another-drink {
+    bottom: 20px; } }

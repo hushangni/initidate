@@ -1,46 +1,52 @@
 //container
 .section--results {
-    position: relative;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    display: none;
 }
 
 .result {
-    border: 1px solid yellow;
     background-color: #444;
     width: 100%;
     height: 100%;
+    // padding: 50px;
     // height: calc(50% - 30px);
     &-title {
-       height: 30px; 
+    height: 30px; 
+    justify-content: flex-end;
     }
     position: relative;
-}
-
-
-.drinks-result__container {
-    & img {
-        // border-radius: 50%;
-        border-radius: 15px;
-        width: calc(100% - 100px);
-        margin: 50px;
     }
-}
 
-.movies-result__container {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    & img {
-        // border-radius: 50%;
-        border-radius: 15px;
-        width: calc(100% - 100px);
-        margin: 50px;
+
+
+
+    .result {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding-bottom: 50px;
     }
-}
 
+    .drink-image,
+    .movie-image {
+        width: calc(100% - 100px);
+        margin: 0 50px;
+        max-width: 400px;
+        height: calc(100% - 200px);
+        margin-top: 50px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
 
-.another-drink {
-    top: calc(100% - 90px);
-}
+    .another-movie,
+    .another-drink {
+        bottom: 20px;
+    }
+   
 
 
 
@@ -51,6 +57,58 @@
 
 .additional-movie-info {
     display: none;
+}
+
+@media (min-width: 750px) {
+    .result {
+    background-color: #444;
+    width: 100%;
+    height: 100%;
+    // padding: 50px;
+    // height: calc(50% - 30px);
+    &-title {
+    height: 30px; 
+    justify-content: flex-end;
+    }
+    position: relative;
+    }
+
+
+    .section--results {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+
+    .result {
+        display: flex;
+        justify-content: center;
+        // flex-direction: column;
+        width: 50%;
+        padding-bottom: 50px;
+    }
+
+    .drink-image,
+    .movie-image {
+        width: calc(100% - 100px);
+        margin: 0 50px;
+        max-width: 400px;
+        height: calc(100% - 200px);
+        margin-top: 50px;
+        object-fit: cover;
+    }
+
+    .another-movie,
+    .another-drink {
+        bottom: 20px;
+    }
+   
+    
+
+
 }
 
 

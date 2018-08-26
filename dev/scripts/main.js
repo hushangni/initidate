@@ -277,6 +277,9 @@ app.events = () => {
 
         app.generateDrink(app.alcoholic);
         // get array of drinks by type - wine/shake/etc
+        $('.section--results').css('display', 'flex');
+        console.log('yes');
+        
     });
 
     $('.another-movie').on('click', function(e) {
@@ -293,6 +296,7 @@ app.events = () => {
         e.preventDefault();
         location.reload();
     })
+
 };
 
 // init function
