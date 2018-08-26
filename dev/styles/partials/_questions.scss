@@ -22,8 +22,8 @@
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        height: 90px;
         margin: 0;
+        padding: 50px 15px 0;
     }
 }
 
@@ -89,24 +89,42 @@ input[type="radio"]:checked + label{
       inset 8em 8em 0 0 $buttonColor;
 }
 
-
-
-// Multiple shadows, one on the outside, another on the inside
-.offset {
-  box-shadow:
-    0.3em 0.3em 0 0 var(--color),
-    inset 0.3em 0.3em 0 0 var(--color);
-
-  &:hover,
-  &:focus {
-    box-shadow:
-      0 0 0 0 var(--hover),
-      inset 6em 3.5em 0 0 var(--hover);
-  }
-}
-
 input[type='radio'] {
     display: none;
+}
+
+#submit {
+    width: 100%;
+    height: 15vh;
+    background-color: #ddab0a;
+    border: none;
+    color: white;
+    font-size: 3.2rem;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    &:after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -200%;
+    width: 200%;
+    height: 150%;
+    opacity: 0;
+    transform: rotate(30deg);
+    background: rgba(255, 255, 255, 0.6);
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.13) 0%,
+        rgba(255, 255, 255, 0.13) 77%,
+        rgba(255, 255, 255, 0.5) 92%,
+        rgba(255, 255, 255, 0.0) 100%
+    );
+    opacity: 1;
+    top: -20%;
+    left: -33%;
+    }
+
 }
 
 
