@@ -181,6 +181,8 @@ app.displayMovie = (movie) => {
 
 
         <div class="additional-movie-info">
+            <i class="fas fa-times"></i>
+            <h3>${title}</h3>
             <p class="movie-rating">${rating}</p>
             <p class="movie-release-date">${releaseDate}</p>
             <p class="movie-overview">${overview}</p>
@@ -250,6 +252,8 @@ app.displayDrink = (drink) => {
         </div>
 
         <div class="additional-drink-info">
+            <i class="fas fa-times"></i>
+            <h3>${name}</h3>
             <div class="ingredients-container">
             </div>
         </div>
@@ -307,8 +311,63 @@ app.events = () => {
 
     $('#planAnother').on('click', function(e) {
         e.preventDefault();
+        $(window).scrollTop(0);
         location.reload();
     })
+
+    $('body').on('click', '.more-info--drinks', function () {
+        $('.additional-drink-info').css('display', 'flex');
+    });
+
+    $('body').on('click', '.more-info--movies', function () {
+        $('.additional-movie-info').css('display', 'flex');
+
+    });
+
+    $('body').on('click', '.fa-times', function () {
+        $('.additional-drink-info').css('display', 'none');
+    });
+
+    $('body').on('click', '.fa-times', function () {
+        $('.additional-movie-info').css('display', 'none');
+    });
+
+    $(".button--header").click(function () {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#section1").offset().top
+        }, 1000);
+    });
+
+    $('input[name=category]').click(function () {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#section2").offset().top
+        }, 1000);
+    });
+
+    $('input[name=genre]').click(function () {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#section3").offset().top
+        }, 1000);
+    });
+
+    $('input[name=rating]').click(function () {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#section4").offset().top
+        }, 1000);
+    });
+
+    $('input[name=alcohol]').click(function () {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#submit").offset().top
+        }, 1000);
+    });
+
+    $("#submit").click(function () {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#section-results").offset().top
+        }, 1000);
+    });
+
 
 };
 
@@ -318,7 +377,6 @@ app.init = () => {
 
     // app.getCocktail(`filter.php?i=Coffee`);
     // app.getCocktail(`lookup.php?i=12770`);
-
     app.events();
 }
 
