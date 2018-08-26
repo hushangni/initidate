@@ -735,11 +735,73 @@ input[type='radio'] {
   .more-info:hover {
     display: block; }
 
+.additional-drink-info,
+.additional-movie-info {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: #565656;
+  color: white;
+  font-size: 2rem;
+  padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .additional-drink-info .fa-times,
+  .additional-movie-info .fa-times {
+    font-size: 4rem;
+    color: #ffcc00;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer; }
+
 .additional-drink-info {
-  display: none; }
+  display: none;
+  height: 200%; }
+  .additional-drink-info h3 {
+    font-size: 2.6rem; }
+  .additional-drink-info .ingredients-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 30px 0; }
+    .additional-drink-info .ingredients-container .measurement-list {
+      margin-right: 15px;
+      color: #ffcc00; }
+    .additional-drink-info .ingredients-container li {
+      font-weight: 700; }
 
 .additional-movie-info {
-  display: none; }
+  display: none;
+  height: 200%;
+  top: -100%; }
+  .additional-movie-info h3 {
+    font-size: 2.6rem;
+    padding-top: 0; }
+  .additional-movie-info .movie-rating {
+    font-weight: 700;
+    font-size: 2.3rem;
+    color: #ffcc00; }
+  .additional-movie-info .movie-release-date {
+    font-weight: 700;
+    font-size: 2.3rem;
+    margin-top: 0; }
 
 @media (min-width: 750px) {
   .result {
