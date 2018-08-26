@@ -173,10 +173,11 @@ app.displayMovie = (movie) => {
     $('.movies-result__container').append(`
         <h3 class="result-title">${title}</h3>
 
+        <button class="button more-info more-info--movies">i</button>
 
-
+        <div class="results__image-container">
         <img src="${app.moviesImageURL +app.moviesImageWidth + imgUrl}" class="movie-image">
-        <button class="button more-info more-info--movies">more info</button>
+        </div>
 
 
         <div class="additional-movie-info">
@@ -206,15 +207,19 @@ app.displayDrink = (drink) => {
     const ingredients = Object.keys(drink).filter(function(k) {
         return k.indexOf('strIngredient') == 0;
     }).reduce(function(newKey, k) {
-        newKey[k] = drink[k].trim();
-        return newKey;
+        if (drink[k] != null) {
+            newKey[k] = drink[k].trim();
+            return newKey;
+        }
     }, {});
 
     const measurements = Object.keys(drink).filter(function (k) {
         return k.indexOf('strMeasure') == 0;
     }).reduce(function (newKey, k) {
-        newKey[k] = drink[k].trim();
-        return newKey;
+        if (drink[k] != null) {
+            newKey[k] = drink[k].trim();
+            return newKey;
+        }
     }, {});
 
     const instructions = drink.strInstructions;
@@ -235,13 +240,14 @@ app.displayDrink = (drink) => {
         ingredientList.append(li);
     }
 
-
     $('.drinks-result__container').empty();
     $('.drinks-result__container').append(`
         <h3 class="result-title">${name}</h3>
-        
-        <img src="${imgUrl}" class="drink-image">
-        <button class="button more-info more-info--drinks">more info</button>
+        <button class="button more-info more-info--drinks">i</button>
+
+        <div class="results__image-container">
+            <img src="${imgUrl}" class="drink-image">
+        </div>
 
         <div class="additional-drink-info">
             <div class="ingredients-container">
@@ -286,7 +292,7 @@ app.events = () => {
         // get array of drinks by type - wine/shake/etc
         $('.section--results').css('display', 'flex');
         console.log('yes');
-        
+
     });
 
     $('.another-movie').on('click', function(e) {
@@ -322,10 +328,3 @@ $(function() {
 })
 
 
-
-
-
-    // <div className="result__image-container">
-    //     < img src = "${imgUrl}" class="drink-image" >
-    //     <button class="button more-info more-info--drinks">more info</button>
-    // </div>

@@ -6,41 +6,153 @@
     flex-wrap: wrap;
     flex-direction: row;
     display: none;
-}
+    #planAnother {
+        width: 100%;
+        height: 15vh;
+        background-color: #ddab0a;
+        border: none;
+        color: white;
+        font-size: 3.2rem;
+        font-weight: 600;
+        position: relative;
+        overflow: hidden;
+        &:after {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: -200%;
+        width: 200%;
+        height: 150%;
+        opacity: 0;
+        transform: rotate(30deg);
+        background: rgba(255, 255, 255, 0.6);
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.13) 0%,
+            rgba(255, 255, 255, 0.13) 77%,
+            rgba(255, 255, 255, 0.5) 92%,
+            rgba(255, 255, 255, 0.0) 100%
+        );
+        opacity: 1;
+        top: -20%;
+        left: -33%;
+        }
 
-.result {
-    background-color: #444;
-    width: 100%;
-    height: 100%;
-    // padding: 50px;
-    // height: calc(50% - 30px);
-    &-title {
-    height: 30px; 
-    justify-content: flex-end;
     }
-    position: relative;
 }
-
-
-
 
 .result {
     display: flex;
-    justify-content: center;
+    background-color: #444;
     width: 100%;
-    padding-bottom: 50px;
+    height: 42.5vh;
+    position: relative;
+
+
+    &-title {
+        position: absolute;
+        right: 0;
+        background-color: #444;
+        width: 50%;
+        font-size: 2rem;
+    }
+
+    .another-drink,
+    .another-movie {
+        background-color: #ddab0a;
+        border: none;
+        font-size: 2rem;
+        padding: 13px 16px;
+        bottom: 39px;
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: -200%;
+            width: 200%;
+            height: 150%;
+            opacity: 0;
+            transform: rotate(30deg);
+            background: rgba(255, 255, 255, 0.6);
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0.13) 0%,
+                rgba(255, 255, 255, 0.13) 77%,
+                rgba(255, 255, 255, 0.5) 92%,
+                rgba(255, 255, 255, 0.0) 100%
+            );
+            opacity: 1;
+            top: -20%;
+            left: -33%;
+        }
+    }
+
+    .another-movie {
+        right: 25%;
+        transform: translateX(50%);
+    }
+
+    .another-drink {
+        left: 25%;
+        transform: translateX(-50%);
+    }
+
 }
 
-.drink-image,
-.movie-image {
-    width: calc(100% - 100px);
-    margin: 0 50px;
-    max-width: 400px;
-    height: calc(100% - 200px);
-    margin-top: 50px;
-    object-fit: cover;
-    border-radius: 20px;
+.movies-result__container,
+.drinks-result__container {
+    position: relative;
+
+    .more-info {
+        display: block;
+        font-family: $primaryFont;
+        padding: 0;
+        height: 52px;
+        width: 52px;
+
+    }
+
+    h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        padding-top: 30px;
+    }
 }
+
+.movies-result__container {
+    .more-info {
+        left: 75%;
+    }
+}
+
+.drinks-result__container {
+    .more-info {
+        left: 25%;
+    }
+
+    h3 {
+        left: 0;
+        right: auto;
+    }
+}
+
+.results__image-container {
+    width: 100%;
+    height: 100%;
+    .drink-image,
+    .movie-image {
+        height: 100%;
+        width: 50%;
+        object-fit: cover;
+    }
+
+    .drink-image {
+        float: right;
+    }
+}
+
+
 
 .drink-image:hover + .more-info{
     display: block;
@@ -48,11 +160,6 @@
 
 .movie-image:hover + .more-info{
     display: block;
-}
-
-.another-movie,
-.another-drink {
-    bottom: 20px;
 }
 
 
@@ -86,7 +193,7 @@
     // padding: 50px;
     // height: calc(50% - 30px);
     &-title {
-    height: 30px; 
+    height: 30px;
     justify-content: flex-end;
     }
     position: relative;
@@ -111,26 +218,23 @@
         padding-bottom: 50px;
     }
 
-    .drink-image,
-    .movie-image {
-        width: calc(100% - 100px);
-        margin: 0 50px;
-        max-width: 400px;
-        height: calc(100% - 200px);
-        margin-top: 50px;
-        object-fit: cover;
-    }
-
     .another-movie,
     .another-drink {
         bottom: 20px;
     }
-   
-    
 
+    .results__image-container {
+        position: relative;
+        width: calc(100% - 60px);
+        max-width: 400px;
+        height: calc(100% - 180px);
+
+        .drink-image,
+        .movie-image {
+            width: 100%;
+            height: 100%;
+
+        }
+    }
 
 }
-
-
-
-
