@@ -270,7 +270,8 @@
     // height: calc(50% - 30px);
     &-title {
     height: 30px;
-    justify-content: flex-end;
+    // justify-content: flex-end;
+    position: relative;
     }
     position: relative;
     }
@@ -292,6 +293,13 @@
         // flex-direction: column;
         width: 50%;
         padding-bottom: 50px;
+        .another-movie,
+        .another-drink {
+            margin: 0 auto;
+            left: auto;
+            right: auto;
+            transform: none;
+        }
     }
 
     .another-movie,
@@ -300,10 +308,12 @@
     }
 
     .results__image-container {
+        margin: 0 auto;
+        // margin-top: 50px;
         position: relative;
         width: calc(100% - 60px);
         max-width: 400px;
-        height: calc(100% - 180px);
+        height: calc(100% - 260px);
 
         .drink-image,
         .movie-image {
@@ -311,6 +321,33 @@
             height: 100%;
 
         }
+        
     }
+
+    .movies-result__container,
+    .drinks-result__container {
+        margin: 0 auto;
+        .more-info {
+            left: 50%;
+            bottom:35px;
+            top: auto;
+            margin: 0 auto;
+        }
+        h3 {
+            width: 100%;
+            position: relative;
+            margin: 40px 0;
+            font-size: 2.5rem;
+        }
+       
+    }
+    .additional-movie-info,
+    .additional-drink-info {
+        height: 100%;
+        top: 25px;
+   }
+    
+
+
 
 }
