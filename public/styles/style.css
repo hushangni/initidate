@@ -618,11 +618,27 @@ input[type='radio'] {
   margin-top: 50px;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 10px; }
+  border-radius: 20px; }
+
+.drink-image:hover + .more-info {
+  display: block; }
+
+.movie-image:hover + .more-info {
+  display: block; }
 
 .another-movie,
 .another-drink {
   bottom: 20px; }
+
+.more-info {
+  left: 50%;
+  top: 50%;
+  background-color: #ddab0a;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: none; }
+  .more-info:hover {
+    display: block; }
 
 .additional-drink-info {
   display: none; }
@@ -652,7 +668,8 @@ input[type='radio'] {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
-            flex-direction: row; }
+            flex-direction: row;
+    display: none; }
   .result {
     display: -webkit-box;
     display: -ms-flexbox;
