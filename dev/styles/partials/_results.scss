@@ -257,12 +257,7 @@
     }
 
     .movie-overview {
-        // text-overflow: ellipsis;
-        // /* Required for text-overflow to do anything */
-        // white-space: nowrap;
-        // overflow: hidden;
-        // -webkit-line-clamp: 7;
-        // -webkit-box-orient: vertical;
+        overflow: auto;
     }
 
 

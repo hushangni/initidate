@@ -46,7 +46,7 @@ app.getMovies = (userGenre, userRating) => {
         }
     }).then((res) => {
         const totalPages = res.total_pages;
-        const topPopular = Math.floor(totalPages * 0.2);
+        const topPopular = Math.floor(totalPages * 0.1);
         const newPageNumber = app.getRandNum(topPopular)+1;
 
         $.ajax({
